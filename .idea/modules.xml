@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aserv.iml" filepath="$PROJECT_DIR$/.idea/modules/aserv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../aserv/.idea/modules/aserv_main.iml" filepath="$PROJECT_DIR$/../aserv/.idea/modules/aserv_main.iml" group="aserv" />
+      <module fileurl="file://$PROJECT_DIR$/../aserv/.idea/modules/aserv_test.iml" filepath="$PROJECT_DIR$/../aserv/.idea/modules/aserv_test.iml" group="aserv" />
+    </modules>
+  </component>
+</project>
