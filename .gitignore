@@ -1,3 +1,4 @@
 .gradle/
 .gradle/buildOutputCleanup
+.idea/
 .idea/workspace.xml
