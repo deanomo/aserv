@@ -22,7 +22,9 @@ jar {
 }
 
 repositories {
-    mavenCentral()
+    maven {
+        url "http://docker-reg.navis.lan:8081/repository/navis-maven/"
+    }
 }
 
 sourceCompatibility = 1.8
