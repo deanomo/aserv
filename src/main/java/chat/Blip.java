@@ -1,4 +1,4 @@
-package hello;
+package chat;
 
 public class Blip {
     private long id;
