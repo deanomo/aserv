@@ -15,11 +15,13 @@
  */
 package chat;
 
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
@@ -58,9 +61,14 @@ public class TheControllerTest {
     @Test
     public void blip() throws Exception {
 
-        this.mockMvc.perform(get("/aserv/blip").param("name", "Spring Community"))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("this is blip 1"));
+        MvcResult result = this.mockMvc.perform(get("/aserv/blip"))
+                .andDo(print()).andExpect(status().isOk()).andReturn();
+        String sr = result.getResponse().getContentAsString();
+        JSONObject json = new JSONObject(sr);
+        Integer id  = (Integer)json.get("id");
+        String content = (String)json.get("content");
+        String res = String.format("this is blip %d", id);
+        assertTrue(content.equals(res));
     }
 
 }

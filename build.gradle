@@ -3,7 +3,9 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     repositories {
-        mavenCentral()
+        maven {
+            url "http://docker-reg.navis.lan:8081/repository/navis-maven/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
@@ -15,6 +17,11 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+
+war {
+    baseName = 'aserv'
+    version =  '0.1.0'
+}
 
 jar {
     baseName = 'n4-rest-service'
@@ -34,5 +41,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('com.jayway.jsonpath:json-path')
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
 
