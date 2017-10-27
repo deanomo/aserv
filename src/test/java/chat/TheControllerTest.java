@@ -32,7 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ControllerTests {
+public class TheControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -40,14 +40,14 @@ public class ControllerTests {
     @LocalServerPort
     int port;
 
-//    @Test
+    @Test
     public void sayWithNoParam() throws Exception {
 
         this.mockMvc.perform(get("/aserv/say")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").value("Hello, World!"));
     }
 
-//    @Test
+    @Test
     public void sayWithParam() throws Exception {
 
         this.mockMvc.perform(get("/aserv/say").param("name", "Spring Community"))
